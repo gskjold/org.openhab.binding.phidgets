@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="phidgets" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+    xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+    <thing-type id="phidget"
+        extensible="analog-input,digital-input,digital-output,voltage-input,voltage-ratio-input,relay-output,vint-port">
+        <label>Phidget</label>
+        <description>A general Phidget thing</description>
+
+        <config-description>
+            <parameter name="serialNumber" type="integer" required="true">
+                <label>Device serial number</label>
+                <description>The phidgets device serial number</description>
+            </parameter>
+        </config-description>
+    </thing-type>
+</thing:thing-descriptions>

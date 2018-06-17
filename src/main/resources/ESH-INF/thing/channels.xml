@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="phidgets" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+    xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+    <channel-type id="digital-input">
+        <item-type>Switch</item-type>
+        <label>Digital input</label>
+        <description>A digital input channel</description>
+        <state readOnly="true"/>
+        <config-description>
+            <parameter name="power-supply" type="integer">
+                <label>Power supply</label>
+                <description>The voltage level being provided to the sensor.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">OFF</option>
+                    <option value="2">12V</option>
+                    <option value="3">24V</option>
+                </options>
+            </parameter>
+            <parameter name="input-mode" type="integer">
+                <label>Input mode</label>
+                <description>The selected polarity mode for the digital input</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">NPN</option>
+                    <option value="2">PNP set</option>
+                </options>
+            </parameter>
+        </config-description>
+    </channel-type>
+
+    <channel-type id="digital-output">
+        <item-type>Switch</item-type>
+        <label>Digital output</label>
+        <description>A digital output channel</description>
+        <config-description>
+            <parameter name="duty-cycle" type="decimal">
+                <label>Duty cycle</label>
+                <description>The DutyCycle represents the on time of the output. A DutyCycle of 1.0 translates to a high output, a DutyCycle of 0 translate to a low output, and a DutyCycle of 0.5 translate to an output that is high half the time, which results in an average output voltage of (output voltage x 0.5). You can use the DutyCycle to create a dimming effect on LEDs.</description>
+            </parameter>
+            <parameter name="led-current-limit" type="decimal">
+                <label>LED current limit</label>
+                <description>The LEDCurrentLimit is the maximum amount of current that the controller will provide to the output. Reference the data sheet of the LED you are using before setting this value.</description>
+            </parameter>
+            <parameter name="led-forward-voltage" type="integer">
+                <label>LED forward voltage</label>
+                <description>The LEDForwardVoltage is the voltage that will be available to your LED. Reference the data sheet of the LED you are using before setting this value. Choose the LEDForwardVoltage that is closest to the forward voltage specified in the data sheet. This forward voltage is shared for all channels on this device. Setting the LEDForwardVoltage on any channel will set the LEDForwardVoltage for all channels on the device.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">1.70 V</option>
+                    <option value="2">2.75 V</option>
+                    <option value="3">3.20 V</option>
+                    <option value="4">3.90 V</option>
+                    <option value="5">4.00 V</option>
+                    <option value="6">4.80 V</option>
+                    <option value="7">5.00 V</option>
+                    <option value="8">5.60 V</option>
+                </options>
+            </parameter>
+        </config-description>
+    </channel-type>
+
+    <channel-type id="relay-output">
+        <item-type>Switch</item-type>
+        <label>Relay</label>
+        <description>Relay</description>
+    </channel-type>
+    
+    <channel-type id="analog-input">
+        <item-type>Number</item-type>
+        <label>Analog input</label>
+        <description>A analog input channel</description>
+        <state readOnly="true"/>
+        <config-description>
+            <parameter name="sensor-type" type="integer">
+                <label>Sensor type</label>
+                <description>Type of sensor attached to the voltage input.</description>
+                <default>0</default>
+                <limitToOptions>true</limitToOptions>
+                <options>
+                    <option value="0">Generic voltage sensor</option>
+                    <option value="1">Generic ratiometric sensor</option>
+                    <option value="11011">1101 - IR Distance Adapter, with Sharp Distance Sensor 2D120X (4-30cm)</option>
+                    <option value="11012">1101 - IR Distance Adapter, with Sharp Distance Sensor 2Y0A21 (10-80cm)</option>
+                    <option value="11013">1101 - IR Distance Adapter, with Sharp Distance Sensor 2Y0A02 (20-150cm)</option>
+                    <option value="11020">1102 - IR Reflective Sensor 5mm</option>
+                    <option value="11030">1103 - IR Reflective Sensor 10cm</option>
+                    <option value="11040">1104 - Vibration Sensor</option>
+                    <option value="11050">1105 - Light Sensor</option>
+                    <option value="11060">1106 - Force Sensor</option>
+                    <option value="11070">1107 - Humidity Sensor</option>
+                    <option value="11080">1108 - Magnetic Sensor</option>
+                    <option value="11090">1109 - Rotation Sensor</option>
+                    <option value="11100">1110 - Touch Sensor</option>
+                    <option value="11110">1111 - Motion Sensor</option>
+                    <option value="11120">1112 - Slider 60</option>
+                    <option value="11130">1113 - Mini Joy Stick Sensor</option>
+                    <option value="11140">1114 - Temperature Sensor</option>
+                    <option value="11150">1115 - Pressure Sensor</option>
+                    <option value="11160">1116 - Multi-turn Rotation Sensor</option>
+                    <option value="11170">1117 - Voltage Sensor</option>
+                    <option value="11181">1118 - 50Amp Current Sensor AC</option>
+                    <option value="11182">1118 - 50Amp Current Sensor DC</option>
+                    <option value="11191">1119 - 20Amp Current Sensor AC</option>
+                    <option value="11192">1119 - 20Amp Current Sensor DC</option>
+                    <option value="11200">1120 - FlexiForce Adapter</option>
+                    <option value="11210">1121 - Voltage Divider</option>
+                    <option value="11221">1122 - 30 Amp Current Sensor AC</option>
+                    <option value="11222">1122 - 30 Amp Current Sensor DC</option>
+                    <option value="11230">1123 - Precision Voltage Sensor</option>
+                    <option value="11240">1124 - Precision Temperature Sensor</option>
+                    <option value="11251">1125 - Humidity Sensor</option>
+                    <option value="11252">1125 - Temperature Sensor</option>
+                    <option value="11260">1126 - Differential Air Pressure Sensor +- 25kPa</option>
+                    <option value="11270">1127 - Precision Light Sensor</option>
+                    <option value="11280">1128 - MaxBotix EZ-1 Sonar Sensor</option>
+                    <option value="11290">1129 - Touch Sensor</option>
+                    <option value="11301">1130 - pH Adapter</option>
+                    <option value="11302">1130 - ORP Adapter</option>
+                    <option value="11310">1131 - Thin Force Sensor</option>
+                    <option value="11320">1132 - 4-20mA Adapter</option>
+                    <option value="11330">1133 - Sound Sensor</option>
+                    <option value="11340">1134 - Switchable Voltage Divider</option>
+                    <option value="11350">1135 - Precision Voltage Sensor</option>
+                    <option value="11360">1136 - Differential Air Pressure Sensor +-2 kPa</option>
+                    <option value="11370">1137 - Differential Air Pressure Sensor +-7 kPa</option>
+                    <option value="11380">1138 - Differential Air Pressure Sensor 50 kPa</option>
+                    <option value="11390">1139 - Differential Air Pressure Sensor 100 kPa</option>
+                    <option value="11400">1140 - Absolute Air Pressure Sensor 20-400 kPa</option>
+                    <option value="11410">1141 - Absolute Air Pressure Sensor 15-115 kPa</option>
+                    <option value="11420">1142 - Light Sensor 1000 lux</option>
+                    <option value="11430">1143 - Light Sensor 70000 lux</option>
+                    <option value="11460">1146 - IR Reflective Sensor 1-4mm</option>
+                    <option value="31200">3120 - Compression Load Cell (0-4.5 kg)</option>
+                    <option value="31210">3121 - Compression Load Cell (0-11.3 kg)</option>
+                    <option value="31220">3122 - Compression Load Cell (0-22.7 kg)</option>
+                    <option value="31230">3123 - Compression Load Cell (0-45.3 kg)</option>
+                    <option value="35000">3500 - AC Current Sensor 10Amp</option>
+                    <option value="35010">3501 - AC Current Sensor 25Amp</option>
+                    <option value="35020">3502 - AC Current Sensor 50Amp</option>
+                    <option value="35030">3503 - AC Current Sensor 100Amp</option>
+                    <option value="35070">3507 - AC Voltage Sensor 0-250V (50Hz)</option>
+                    <option value="35080">3508 - AC Voltage Sensor 0-250V (60Hz)</option>
+                    <option value="35090">3509 - DC Voltage Sensor 0-200V</option>
+                    <option value="31300">3130 - Relative Humidity Sensor</option>
+                    <option value="35100">3510 - DC Voltage Sensor 0-75V</option>
+                    <option value="35110">3511 - DC Current Sensor 0-10mA</option>
+                    <option value="35120">3512 - DC Current Sensor 0-100mA</option>
+                    <option value="35130">3513 - DC Current Sensor 0-1A</option>
+                    <option value="35140">3514 - AC Active Power Sensor 0-250V*0-30A (50Hz)</option>
+                    <option value="35150">3515 - AC Active Power Sensor 0-250V*0-30A (60Hz)</option>
+                    <option value="35160">3516 - AC Active Power Sensor 0-250V*0-5A (50Hz)</option>
+                    <option value="35170">3517 - AC Active Power Sensor 0-250V*0-5A (60Hz)</option>
+                    <option value="35180">3518 - AC Active Power Sensor 0-110V*0-5A (60Hz)</option>
+                    <option value="35190">3519 - AC Active Power Sensor 0-110V*0-15A (60Hz)</option>
+                    <option value="35200">3520 - Sharp Distance Sensor (4-30cm)</option>
+                    <option value="35210">3521 - Sharp Distance Sensor (10-80cm)</option>
+                    <option value="35220">3522 - Sharp Distance Sensor (20-150cm)</option>
+                    <option value="35840">3584 - 0-50A DC Current Transducer</option>
+                    <option value="35850">3585 - 0-100A DC Current Transducer</option>
+                    <option value="35860">3586 - 0-250A DC Current Transducer</option>
+                    <option value="35870">3587 - +-50A DC Current Transducer</option>
+                    <option value="35880">3588 - +-100A DC Current Transducer</option>
+                    <option value="35890">3589 - +-250A DC Current Transducer</option>
+                </options>
+            </parameter>
+            <parameter name="voltage-range" type="integer">
+                <label>Voltage range</label>
+                <description>Measurement range of the voltage input. Larger ranges have less resolution.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">±10mV DC</option>
+                    <option value="2">±40mV DC</option>
+                    <option value="3">±200mV DC</option>
+                    <option value="4">±312.5mV DC</option>
+                    <option value="5">±400mV DC</option>
+                    <option value="6">±1000mV DC</option>
+                    <option value="7">±2V DC</option>
+                    <option value="8">±5V DC</option>
+                    <option value="9">±15V DC</option>
+                    <option value="10">±40V DC</option>
+                    <option value="11">Auto</option>
+                </options>
+            </parameter>
+            <parameter name="power-supply" type="integer">
+                <label>Power supply</label>
+                <description>The voltage level being provided to the sensor.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">OFF</option>
+                    <option value="2">12V</option>
+                    <option value="3">24V</option>
+                </options>
+            </parameter>
+            <parameter name="bridge-enable" type="boolean">
+                <label>Bridge enable</label>
+                <description>Enable power to and data from the input</description>
+                <default>false</default>
+            </parameter>
+            <parameter name="bridge-gain" type="integer">
+                <label>Bridge gain</label>
+                <description>Bridge gain amplification setting. Higher gain results in better resolution, but narrower voltage range.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">No amplification</option>
+                    <option value="1">1x Amplification</option>
+                    <option value="2">2x Amplification</option>
+                    <option value="3">4x Amplification</option>
+                    <option value="4">8x Amplification</option>
+                    <option value="5">16x Amplification</option>
+                    <option value="6">32x Amplification</option>
+                    <option value="7">64x Amplification</option>
+                    <option value="8">128x Amplification</option>
+                </options>
+            </parameter>
+            <parameter name="sensitivity" type="decimal">
+                <label>Sensitivity</label>
+                <description>The amount of change needed to trigger update</description>
+                <default>0.1</default>
+            </parameter>
+        </config-description>
+    </channel-type>
+
+    <channel-type id="voltage-input">
+        <item-type>Number</item-type>
+        <label>Voltage Input</label>
+        <description>A voltage input channel</description>
+        <state readOnly="true"/>
+        <config-description>
+            <parameter name="power-supply" type="integer">
+                <label>Power supply</label>
+                <description>The voltage level being provided to the sensor.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">OFF</option>
+                    <option value="2">12V</option>
+                    <option value="3">24V</option>
+                </options>
+            </parameter>
+            <parameter name="sensor-type" type="integer">
+                <label>Sensor type</label>
+                <description>Type of sensor attached to the voltage input.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Generic voltage sensor</option>
+                    <option value="11140">1114 - Temperature Sensor</option>
+                    <option value="11170">1117 - Voltage Sensor</option>
+                    <option value="11230">1123 - Precision Voltage Sensor</option>
+                    <option value="11270">1127 - Precision Light Sensor</option>
+                    <option value="11301">1130 - pH Adapter</option>
+                    <option value="11302">1130 - ORP Adapter</option>
+                    <option value="11320">1132 - 4-20mA Adapter</option>
+                    <option value="11330">1133 - Sound Sensor</option>
+                    <option value="11350">1135 - Precision Voltage Sensor</option>
+                    <option value="11420">1142 - Light Sensor 1000 lux</option>
+                    <option value="11430">1143 - Light Sensor 70000 lux</option>
+                    <option value="35000">3500 - AC Current Sensor 10Amp</option>
+                    <option value="35010">3501 - AC Current Sensor 25Amp</option>
+                    <option value="35020">3502 - AC Current Sensor 50Amp</option>
+                    <option value="35030">3503 - AC Current Sensor 100Amp</option>
+                    <option value="35070">3507 - AC Voltage Sensor 0-250V (50Hz)</option>
+                    <option value="35080">3508 - AC Voltage Sensor 0-250V (60Hz)</option>
+                    <option value="35090">3509 - DC Voltage Sensor 0-200V</option>
+                    <option value="35100">3510 - DC Voltage Sensor 0-75V</option>
+                    <option value="35110">3511 - DC Current Sensor 0-10mA</option>
+                    <option value="35120">3512 - DC Current Sensor 0-100mA</option>
+                    <option value="35130">3513 - DC Current Sensor 0-1A</option>
+                    <option value="35140">3514 - AC Active Power Sensor 0-250V*0-30A (50Hz)</option>
+                    <option value="35150">3515 - AC Active Power Sensor 0-250V*0-30A (60Hz)</option>
+                    <option value="35160">3516 - AC Active Power Sensor 0-250V*0-5A (50Hz)</option>
+                    <option value="35170">3517 - AC Active Power Sensor 0-250V*0-5A (60Hz)</option>
+                    <option value="35180">3518 - AC Active Power Sensor 0-110V*0-5A (60Hz)</option>
+                    <option value="35190">3519 - AC Active Power Sensor 0-110V*0-15A (60Hz)</option>
+                    <option value="35840">3584 - 0-50A DC Current Transducer</option>
+                    <option value="35850">3585 - 0-100A DC Current Transducer</option>
+                    <option value="35860">3586 - 0-250A DC Current Transducer</option>
+                    <option value="35870">3587 - +-50A DC Current Transducer</option>
+                    <option value="35880">3588 - +-100A DC Current Transducer</option>
+                    <option value="35890">3589 - +-250A DC Current Transducer</option>
+                </options>
+            </parameter>
+            <parameter name="voltage-range" type="integer">
+                <label>Voltage range</label>
+                <description>Measurement range of the voltage input. Larger ranges have less resolution.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">±10mV DC</option>
+                    <option value="2">±40mV DC</option>
+                    <option value="3">±200mV DC</option>
+                    <option value="4">±312.5mV DC</option>
+                    <option value="5">±400mV DC</option>
+                    <option value="6">±1000mV DC</option>
+                    <option value="7">±2V DC</option>
+                    <option value="8">±5V DC</option>
+                    <option value="9">±15V DC</option>
+                    <option value="10">±40V DC</option>
+                    <option value="11">Auto</option>
+                </options>
+            </parameter>
+            <parameter name="sensitivity" type="decimal">
+                <label>Sensitivity</label>
+                <description>The amount of change needed to trigger update</description>
+            </parameter>
+        </config-description>
+    </channel-type>
+    
+    <channel-type id="voltage-ratio-input">
+        <item-type>Number</item-type>
+        <label>Voltage Ratio Input</label>
+        <description>A voltage ratio input channel</description>
+        <state readOnly="true"/>
+        <config-description>
+            <parameter name="bridge-enable" type="boolean">
+                <label>Bridge enable</label>
+                <description>Enable power to and data from the input</description>
+            </parameter>
+            <parameter name="bridge-gain" type="integer">
+                <label>Bridge gain</label>
+                <description>Bridge gain amplification setting. Higher gain results in better resolution, but narrower voltage range.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">No amplification</option>
+                    <option value="1">1x Amplification</option>
+                    <option value="2">2x Amplification</option>
+                    <option value="3">4x Amplification</option>
+                    <option value="4">8x Amplification</option>
+                    <option value="5">16x Amplification</option>
+                    <option value="6">32x Amplification</option>
+                    <option value="7">64x Amplification</option>
+                    <option value="8">128x Amplification</option>
+                </options>
+            </parameter>
+            <parameter name="sensor-type" type="integer">
+                <label>Sensor type</label>
+                <description>The type of sensor attached to the voltage ratio input</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Generic ratiometric sensor</option>
+                    <option value="11011">1101 - IR Distance Adapter, with Sharp Distance Sensor 2D120X (4-30cm)</option>
+                    <option value="11012">1101 - IR Distance Adapter, with Sharp Distance Sensor 2Y0A21 (10-80cm)</option>
+                    <option value="11013">1101 - IR Distance Adapter, with Sharp Distance Sensor 2Y0A02 (20-150cm)</option>
+                    <option value="11020">1102 - IR Reflective Sensor 5mm</option>
+                    <option value="11030">1103 - IR Reflective Sensor 10cm</option>
+                    <option value="11040">1104 - Vibration Sensor</option>
+                    <option value="11050">1105 - Light Sensor</option>
+                    <option value="11060">1106 - Force Sensor</option>
+                    <option value="11070">1107 - Humidity Sensor</option>
+                    <option value="11080">1108 - Magnetic Sensor</option>
+                    <option value="11090">1109 - Rotation Sensor</option>
+                    <option value="11100">1110 - Touch Sensor</option>
+                    <option value="11110">1111 - Motion Sensor</option>
+                    <option value="11120">1112 - Slider 60</option>
+                    <option value="11130">1113 - Mini Joy Stick Sensor</option>
+                    <option value="11150">1115 - Pressure Sensor</option>
+                    <option value="11160">1116 - Multi-turn Rotation Sensor</option>
+                    <option value="11181">1118 - 50Amp Current Sensor AC</option>
+                    <option value="11182">1118 - 50Amp Current Sensor DC</option>
+                    <option value="11191">1119 - 20Amp Current Sensor AC</option>
+                    <option value="11192">1119 - 20Amp Current Sensor DC</option>
+                    <option value="11200">1120 - FlexiForce Adapter</option>
+                    <option value="11210">1121 - Voltage Divider</option>
+                    <option value="11221">1122 - 30 Amp Current Sensor AC</option>
+                    <option value="11222">1122 - 30 Amp Current Sensor DC</option>
+                    <option value="11240">1124 - Precision Temperature Sensor</option>
+                    <option value="11251">1125 - Humidity Sensor</option>
+                    <option value="11252">1125 - Temperature Sensor</option>
+                    <option value="11260">1126 - Differential Air Pressure Sensor +- 25kPa</option>
+                    <option value="11280">1128 - MaxBotix EZ-1 Sonar Sensor</option>
+                    <option value="11290">1129 - Touch Sensor</option>
+                    <option value="11310">1131 - Thin Force Sensor</option>
+                    <option value="11340">1134 - Switchable Voltage Divider</option>
+                    <option value="11360">1136 - Differential Air Pressure Sensor +-2 kPa</option>
+                    <option value="11370">1137 - Differential Air Pressure Sensor +-7 kPa</option>
+                    <option value="11380">1138 - Differential Air Pressure Sensor 50 kPa</option>
+                    <option value="11390">1139 - Differential Air Pressure Sensor 100 kPa</option>
+                    <option value="11400">1140 - Absolute Air Pressure Sensor 20-400 kPa</option>
+                    <option value="11410">1141 - Absolute Air Pressure Sensor 15-115 kPa</option>
+                    <option value="11460">1146 - IR Reflective Sensor 1-4mm</option>
+                    <option value="31200">3120 - Compression Load Cell (0-4.5 kg)</option>
+                    <option value="31210">3121 - Compression Load Cell (0-11.3 kg)</option>
+                    <option value="31220">3122 - Compression Load Cell (0-22.7 kg)</option>
+                    <option value="31230">3123 - Compression Load Cell (0-45.3 kg)</option>
+                    <option value="31300">3130 - Relative Humidity Sensor</option>
+                    <option value="35200">3520 - Sharp Distance Sensor (4-30cm)</option>
+                    <option value="35210">3521 - Sharp Distance Sensor (10-80cm)</option>
+                    <option value="35220">3522 - Sharp Distance Sensor (20-150cm)</option>
+                </options>
+            </parameter>
+            <parameter name="sensitivity" type="decimal">
+                <label>Sensitivity</label>
+                <description>The amount of change needed to trigger update</description>
+            </parameter>
+        </config-description>
+    </channel-type>
+    
+    <channel-type id="vint-port">
+        <item-type>Number</item-type>
+        <label>VINT port</label>
+        <description>A Versatile Interface Port</description>
+        <config-description>
+            <parameter-group name="digital-input-group">
+                <label>Digital Input</label>
+            </parameter-group>
+            <parameter-group name="digital-output-group">
+                <label>Digital Output</label>
+            </parameter-group>
+            <parameter-group name="voltage-input-group">
+                <label>Voltage Input</label>
+            </parameter-group>
+            <parameter-group name="voltage-ratio-input-group">
+                <label>Voltage Ratio Input</label>
+            </parameter-group>
+            <parameter name="port-mode" type="integer">
+                <label>Port mode</label>
+                <description>Mode of the VINT port.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">VINT</option>
+                    <option value="1">Digital Input</option>
+                    <option value="2">Digital Output</option>
+                    <option value="3">Voltage Input</option>
+                    <option value="4">Voltage Ratio Input</option>
+                </options>
+            </parameter>
+            <parameter name="sensitivity" type="decimal">
+                <label>Sensitivity</label>
+                <description>The amount of change needed to trigger update</description>
+            </parameter>
+            <parameter name="power-supply" type="integer" groupName="digital-input">
+                <label>Power supply</label>
+                <description>The voltage level being provided to the sensor.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">OFF</option>
+                    <option value="2">12V</option>
+                    <option value="3">24V</option>
+                </options>
+            </parameter>
+            <parameter name="input-mode" type="integer" groupName="digital-input">
+                <label>Input mode</label>
+                <description>The selected polarity mode for the digital input</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">NPN</option>
+                    <option value="2">PNP set</option>
+                </options>
+            </parameter>
+            <parameter name="duty-cycle" type="decimal" groupName="digital-output-group">
+                <label>Duty cycle</label>
+                <description>The DutyCycle represents the on time of the output. A DutyCycle of 1.0 translates to a high output, a DutyCycle of 0 translate to a low output, and a DutyCycle of 0.5 translate to an output that is high half the time, which results in an average output voltage of (output voltage x 0.5). You can use the DutyCycle to create a dimming effect on LEDs.</description>
+            </parameter>
+            <parameter name="led-current-limit" type="decimal" groupName="digital-output-group">
+                <label>LED current limit</label>
+                <description>The LEDCurrentLimit is the maximum amount of current that the controller will provide to the output. Reference the data sheet of the LED you are using before setting this value.</description>
+            </parameter>
+            <parameter name="led-forward-voltage" type="integer" groupName="digital-output-group">
+                <label>LED forward voltage</label>
+                <description>The LEDForwardVoltage is the voltage that will be available to your LED. Reference the data sheet of the LED you are using before setting this value. Choose the LEDForwardVoltage that is closest to the forward voltage specified in the data sheet. This forward voltage is shared for all channels on this device. Setting the LEDForwardVoltage on any channel will set the LEDForwardVoltage for all channels on the device.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">1.70 V</option>
+                    <option value="2">2.75 V</option>
+                    <option value="3">3.20 V</option>
+                    <option value="4">3.90 V</option>
+                    <option value="5">4.00 V</option>
+                    <option value="6">4.80 V</option>
+                    <option value="7">5.00 V</option>
+                    <option value="8">5.60 V</option>
+                </options>
+            </parameter>
+            <parameter name="power-supply" type="integer" groupName="voltage-input-group">
+                <label>Power supply</label>
+                <description>The voltage level being provided to the sensor.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">OFF</option>
+                    <option value="2">12V</option>
+                    <option value="3">24V</option>
+                </options>
+            </parameter>
+            <parameter name="sensor-type" type="integer" groupName="voltage-input-group">
+                <label>Sensor type</label>
+                <description>Type of sensor attached to the voltage input.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Generic voltage sensor</option>
+                    <option value="11140">1114 - Temperature Sensor</option>
+                    <option value="11170">1117 - Voltage Sensor</option>
+                    <option value="11230">1123 - Precision Voltage Sensor</option>
+                    <option value="11270">1127 - Precision Light Sensor</option>
+                    <option value="11301">1130 - pH Adapter</option>
+                    <option value="11302">1130 - ORP Adapter</option>
+                    <option value="11320">1132 - 4-20mA Adapter</option>
+                    <option value="11330">1133 - Sound Sensor</option>
+                    <option value="11350">1135 - Precision Voltage Sensor</option>
+                    <option value="11420">1142 - Light Sensor 1000 lux</option>
+                    <option value="11430">1143 - Light Sensor 70000 lux</option>
+                    <option value="35000">3500 - AC Current Sensor 10Amp</option>
+                    <option value="35010">3501 - AC Current Sensor 25Amp</option>
+                    <option value="35020">3502 - AC Current Sensor 50Amp</option>
+                    <option value="35030">3503 - AC Current Sensor 100Amp</option>
+                    <option value="35070">3507 - AC Voltage Sensor 0-250V (50Hz)</option>
+                    <option value="35080">3508 - AC Voltage Sensor 0-250V (60Hz)</option>
+                    <option value="35090">3509 - DC Voltage Sensor 0-200V</option>
+                    <option value="35100">3510 - DC Voltage Sensor 0-75V</option>
+                    <option value="35110">3511 - DC Current Sensor 0-10mA</option>
+                    <option value="35120">3512 - DC Current Sensor 0-100mA</option>
+                    <option value="35130">3513 - DC Current Sensor 0-1A</option>
+                    <option value="35140">3514 - AC Active Power Sensor 0-250V*0-30A (50Hz)</option>
+                    <option value="35150">3515 - AC Active Power Sensor 0-250V*0-30A (60Hz)</option>
+                    <option value="35160">3516 - AC Active Power Sensor 0-250V*0-5A (50Hz)</option>
+                    <option value="35170">3517 - AC Active Power Sensor 0-250V*0-5A (60Hz)</option>
+                    <option value="35180">3518 - AC Active Power Sensor 0-110V*0-5A (60Hz)</option>
+                    <option value="35190">3519 - AC Active Power Sensor 0-110V*0-15A (60Hz)</option>
+                    <option value="35840">3584 - 0-50A DC Current Transducer</option>
+                    <option value="35850">3585 - 0-100A DC Current Transducer</option>
+                    <option value="35860">3586 - 0-250A DC Current Transducer</option>
+                    <option value="35870">3587 - +-50A DC Current Transducer</option>
+                    <option value="35880">3588 - +-100A DC Current Transducer</option>
+                    <option value="35890">3589 - +-250A DC Current Transducer</option>
+                </options>
+            </parameter>
+            <parameter name="voltage-range" type="integer" groupName="voltage-input-group">
+                <label>Voltage range</label>
+                <description>Measurement range of the voltage input. Larger ranges have less resolution.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Not set</option>
+                    <option value="1">±10mV DC</option>
+                    <option value="2">±40mV DC</option>
+                    <option value="3">±200mV DC</option>
+                    <option value="4">±312.5mV DC</option>
+                    <option value="5">±400mV DC</option>
+                    <option value="6">±1000mV DC</option>
+                    <option value="7">±2V DC</option>
+                    <option value="8">±5V DC</option>
+                    <option value="9">±15V DC</option>
+                    <option value="10">±40V DC</option>
+                    <option value="11">Auto</option>
+                </options>
+            </parameter>
+            <parameter name="bridge-enable" type="boolean" groupName="voltage-ratio-input-group">
+                <label>Bridge enable</label>
+                <description>Enable power to and data from the input</description>
+            </parameter>
+            <parameter name="bridge-gain" type="integer" groupName="voltage-ratio-input-group">
+                <label>Bridge gain</label>
+                <description>Bridge gain amplification setting. Higher gain results in better resolution, but narrower voltage range.</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">No amplification</option>
+                    <option value="1">1x Amplification</option>
+                    <option value="2">2x Amplification</option>
+                    <option value="3">4x Amplification</option>
+                    <option value="4">8x Amplification</option>
+                    <option value="5">16x Amplification</option>
+                    <option value="6">32x Amplification</option>
+                    <option value="7">64x Amplification</option>
+                    <option value="8">128x Amplification</option>
+                </options>
+            </parameter>
+            <parameter name="sensor-type" type="integer" groupName="voltage-ratio-input-group">
+                <label>Sensor type</label>
+                <description>The type of sensor attached to the voltage ratio input</description>
+                <limitToOptions>true</limitToOptions>
+                <default>0</default>
+                <options>
+                    <option value="0">Generic ratiometric sensor</option>
+                    <option value="11011">1101 - IR Distance Adapter, with Sharp Distance Sensor 2D120X (4-30cm)</option>
+                    <option value="11012">1101 - IR Distance Adapter, with Sharp Distance Sensor 2Y0A21 (10-80cm)</option>
+                    <option value="11013">1101 - IR Distance Adapter, with Sharp Distance Sensor 2Y0A02 (20-150cm)</option>
+                    <option value="11020">1102 - IR Reflective Sensor 5mm</option>
+                    <option value="11030">1103 - IR Reflective Sensor 10cm</option>
+                    <option value="11040">1104 - Vibration Sensor</option>
+                    <option value="11050">1105 - Light Sensor</option>
+                    <option value="11060">1106 - Force Sensor</option>
+                    <option value="11070">1107 - Humidity Sensor</option>
+                    <option value="11080">1108 - Magnetic Sensor</option>
+                    <option value="11090">1109 - Rotation Sensor</option>
+                    <option value="11100">1110 - Touch Sensor</option>
+                    <option value="11110">1111 - Motion Sensor</option>
+                    <option value="11120">1112 - Slider 60</option>
+                    <option value="11130">1113 - Mini Joy Stick Sensor</option>
+                    <option value="11150">1115 - Pressure Sensor</option>
+                    <option value="11160">1116 - Multi-turn Rotation Sensor</option>
+                    <option value="11181">1118 - 50Amp Current Sensor AC</option>
+                    <option value="11182">1118 - 50Amp Current Sensor DC</option>
+                    <option value="11191">1119 - 20Amp Current Sensor AC</option>
+                    <option value="11192">1119 - 20Amp Current Sensor DC</option>
+                    <option value="11200">1120 - FlexiForce Adapter</option>
+                    <option value="11210">1121 - Voltage Divider</option>
+                    <option value="11221">1122 - 30 Amp Current Sensor AC</option>
+                    <option value="11222">1122 - 30 Amp Current Sensor DC</option>
+                    <option value="11240">1124 - Precision Temperature Sensor</option>
+                    <option value="11251">1125 - Humidity Sensor</option>
+                    <option value="11252">1125 - Temperature Sensor</option>
+                    <option value="11260">1126 - Differential Air Pressure Sensor +- 25kPa</option>
+                    <option value="11280">1128 - MaxBotix EZ-1 Sonar Sensor</option>
+                    <option value="11290">1129 - Touch Sensor</option>
+                    <option value="11310">1131 - Thin Force Sensor</option>
+                    <option value="11340">1134 - Switchable Voltage Divider</option>
+                    <option value="11360">1136 - Differential Air Pressure Sensor +-2 kPa</option>
+                    <option value="11370">1137 - Differential Air Pressure Sensor +-7 kPa</option>
+                    <option value="11380">1138 - Differential Air Pressure Sensor 50 kPa</option>
+                    <option value="11390">1139 - Differential Air Pressure Sensor 100 kPa</option>
+                    <option value="11400">1140 - Absolute Air Pressure Sensor 20-400 kPa</option>
+                    <option value="11410">1141 - Absolute Air Pressure Sensor 15-115 kPa</option>
+                    <option value="11460">1146 - IR Reflective Sensor 1-4mm</option>
+                    <option value="31200">3120 - Compression Load Cell (0-4.5 kg)</option>
+                    <option value="31210">3121 - Compression Load Cell (0-11.3 kg)</option>
+                    <option value="31220">3122 - Compression Load Cell (0-22.7 kg)</option>
+                    <option value="31230">3123 - Compression Load Cell (0-45.3 kg)</option>
+                    <option value="31300">3130 - Relative Humidity Sensor</option>
+                    <option value="35200">3520 - Sharp Distance Sensor (4-30cm)</option>
+                    <option value="35210">3521 - Sharp Distance Sensor (10-80cm)</option>
+                    <option value="35220">3522 - Sharp Distance Sensor (20-150cm)</option>
+                </options>
+            </parameter>
+        </config-description>
+    </channel-type>
+
+</thing:thing-descriptions>

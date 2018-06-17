@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="phidgets" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+    xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+    <thing-type id="phidget_1017">
+        <label>PhidgetInterfaceKit 0/0/8</label>
+        <description>PhidgetInterfaceKit 0/0/8 - Control 8 DPDT mechanical relays, switching up to 250VAC/2amp or 200VDC/2amp</description>
+
+        <channels>
+            <channel typeId="relay-output" id="r_0">
+                <label>Relay 0</label>
+                <properties>
+                    <property name="channel">0</property>
+                </properties>
+            </channel>
+            <channel typeId="relay-output" id="r_1">
+                <label>Relay 1</label>
+                <properties>
+                    <property name="channel">1</property>
+                </properties>
+            </channel>
+            <channel typeId="relay-output" id="r_2">
+                <label>Relay 2</label>
+                <properties>
+                    <property name="channel">2</property>
+                </properties>
+            </channel>
+            <channel typeId="relay-output" id="r_3">
+                <label>Relay 3</label>
+                <properties>
+                    <property name="channel">3</property>
+                </properties>
+            </channel>
+            <channel typeId="relay-output" id="r_4">
+                <label>Relay 4</label>
+                <properties>
+                    <property name="channel">4</property>
+                </properties>
+            </channel>
+            <channel typeId="relay-output" id="r_5">
+                <label>Relay 5</label>
+                <properties>
+                    <property name="channel">5</property>
+                </properties>
+            </channel>
+            <channel typeId="relay-output" id="r_6">
+                <label>Relay 6</label>
+                <properties>
+                    <property name="channel">6</property>
+                </properties>
+            </channel>
+            <channel typeId="relay-output" id="r_7">
+                <label>Relay 7</label>
+                <properties>
+                    <property name="channel">7</property>
+                </properties>
+            </channel>
+        </channels>
+
+        <properties>
+            <property name="serialNumber"></property>
+        </properties>
+    </thing-type>
+</thing:thing-descriptions>

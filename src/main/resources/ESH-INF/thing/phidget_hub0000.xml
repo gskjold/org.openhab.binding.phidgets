@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="phidgets" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+    xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+    <thing-type id="phidget_hub0000">
+        <label>VINT HUB Phidget</label>
+        <description>The core of our product line, the USB VINT Hub has 6 VINT ports allowing for endless possibilities for USB sensing and control.</description>
+
+        <channels>
+            <channel typeId="vint-port" id="vint_0">
+                <label>VINT port 0</label>
+                <properties>
+                    <property name="port">0</property>
+                </properties>
+            </channel>
+            <channel typeId="vint-port" id="vint_1">
+                <label>VINT port 1</label>
+                <properties>
+                    <property name="port">1</property>
+                </properties>
+            </channel>
+            <channel typeId="vint-port" id="vint_2">
+                <label>VINT port 2</label>
+                <properties>
+                    <property name="port">2</property>
+                </properties>
+            </channel>
+            <channel typeId="vint-port" id="vint_3">
+                <label>VINT port 3</label>
+                <properties>
+                    <property name="port">3</property>
+                </properties>
+            </channel>
+            <channel typeId="vint-port" id="vint_4">
+                <label>VINT port 4</label>
+                <properties>
+                    <property name="port">4</property>
+                </properties>
+            </channel>
+            <channel typeId="vint-port" id="vint_5">
+                <label>VINT port 5</label>
+                <properties>
+                    <property name="port">5</property>
+                </properties>
+            </channel>
+        </channels>
+
+        <properties>
+            <property name="serialNumber"></property>
+        </properties>
+    </thing-type>
+</thing:thing-descriptions>

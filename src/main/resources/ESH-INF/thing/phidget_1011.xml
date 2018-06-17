@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="phidgets" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+    xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+    <thing-type id="phidget_1011">
+        <label>PhidgetInterfaceKit 2/2/2 </label>
+        <description>PhidgetInterfaceKit 2/2/2 - Small Dongle with 2 Analog Inputs, 2 Digital Inputs and 2 Digital Outputs. Use it when space is critical</description>
+
+        <channels>
+            <channel typeId="analog-input" id="ai_0">
+                <label>Analog input 0</label>
+                <properties>
+                    <property name="channel">0</property>
+                </properties>
+            </channel>
+            <channel typeId="analog-input" id="ai_1">
+                <label>Analog input 1</label>
+                <properties>
+                    <property name="channel">1</property>
+                </properties>
+            </channel>
+
+            <channel typeId="digital-input" id="di_0">
+                <label>Digital input 0</label>
+                <properties>
+                    <property name="channel">0</property>
+                </properties>
+            </channel>
+            <channel typeId="digital-input" id="di_1">
+                <label>Digital input 1</label>
+                <properties>
+                    <property name="channel">1</property>
+                </properties>
+            </channel>
+
+            <channel typeId="digital-output" id="do_0">
+                <label>Digital output 0</label>
+                <properties>
+                    <property name="channel">0</property>
+                </properties>
+            </channel>
+            <channel typeId="digital-output" id="do_1">
+                <label>Digital output 1</label>
+                <properties>
+                    <property name="channel">1</property>
+                </properties>
+            </channel>
+        </channels>
+
+        <properties>
+            <property name="serialNumber"></property>
+        </properties>
+    </thing-type>
+</thing:thing-descriptions>

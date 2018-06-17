@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.openhab.binding</groupId>
+    <artifactId>org.openhab.binding.phidgets</artifactId>
+    <version>2.3.0</version>
+
+    <repositories>
+
+        <!-- releases -->
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>jcenter</id>
+            <name>JCenter Repository</name>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>openhab-artifactory-release</id>
+            <name>JFrog Artifactory Repository</name>
+            <url>https://openhab.jfrog.io/openhab/libs-release</url>
+        </repository>
+
+        <!-- snapshots -->
+        <repository>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <id>openhab-artifactory-snapshot</id>
+            <name>JFrog Artifactory Repository</name>
+            <url>https://openhab.jfrog.io/openhab/libs-snapshot</url>
+        </repository>
+
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>phidget22</groupId>
+            <artifactId>phidget22</artifactId>
+            <scope>system</scope>
+            <version>1.0.0</version>
+            <systemPath>${project.basedir}/src/main/resources/lib/phidget22.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jdt</groupId>
+            <artifactId>org.eclipse.jdt.annotation</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.smarthome.config</groupId>
+            <artifactId>org.eclipse.smarthome.config.core</artifactId>
+            <version>0.10.0.oh230</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.smarthome.config</groupId>
+            <artifactId>org.eclipse.smarthome.config.discovery</artifactId>
+            <version>0.10.0.oh230</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.smarthome.core</groupId>
+            <artifactId>org.eclipse.smarthome.core</artifactId>
+            <version>0.10.0.oh230</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.smarthome.core</groupId>
+            <artifactId>org.eclipse.smarthome.core.thing</artifactId>
+            <version>0.10.0.oh230</version>
+        </dependency>
+        <dependency>
+            <groupId>p2.osgi.bundle</groupId>
+            <artifactId>org.eclipse.osgi.services</artifactId>
+            <version>3.6.0.v20170228-1906</version>
+        </dependency>
+    </dependencies>
+</project>

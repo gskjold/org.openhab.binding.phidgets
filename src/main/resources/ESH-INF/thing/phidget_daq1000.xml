@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="phidgets" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+    xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+    <thing-type id="phidget_daq1000">
+        <label>8x Voltage Input Phidget</label>
+        <description>8x Voltage Input Phidget - With eight analog ports, you can connect a bunch of 5V sensors or measure small voltage signals</description>
+
+        <channels>
+            <channel typeId="analog-input" id="ai_0">
+                <label>Analog input 0</label>
+                <properties>
+                    <property name="channel">0</property>
+                </properties>
+            </channel>
+            <channel typeId="analog-input" id="ai_1">
+                <label>Analog input 1</label>
+                <properties>
+                    <property name="channel">1</property>
+                </properties>
+            </channel>
+            <channel typeId="analog-input" id="ai_2">
+                <label>Analog input 2</label>
+                <properties>
+                    <property name="channel">2</property>
+                </properties>
+            </channel>
+            <channel typeId="analog-input" id="ai_3">
+                <label>Analog input 3</label>
+                <properties>
+                    <property name="channel">3</property>
+                </properties>
+            </channel>
+            <channel typeId="analog-input" id="ai_4">
+                <label>Analog input 4</label>
+                <properties>
+                    <property name="channel">4</property>
+                </properties>
+            </channel>
+            <channel typeId="analog-input" id="ai_5">
+                <label>Analog input 5</label>
+                <properties>
+                    <property name="channel">5</property>
+                </properties>
+            </channel>
+            <channel typeId="analog-input" id="ai_6">
+                <label>Analog input 6</label>
+                <properties>
+                    <property name="channel">6</property>
+                </properties>
+            </channel>
+            <channel typeId="analog-input" id="ai_7">
+                <label>Analog input 7</label>
+                <properties>
+                    <property name="channel">7</property>
+                </properties>
+            </channel>
+        </channels>
+
+        <properties>
+            <property name="serialNumber"></property>
+        </properties>
+    </thing-type>
+</thing:thing-descriptions>

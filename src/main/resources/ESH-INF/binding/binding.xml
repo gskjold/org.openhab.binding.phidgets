@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<binding:binding id="phidgets"
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xmlns:binding="http://eclipse.org/smarthome/schemas/binding/v1.0.0"
+				 xsi:schemaLocation="http://eclipse.org/smarthome/schemas/binding/v1.0.0 http://eclipse.org/smarthome/schemas/binding-1.0.0.xsd">
+
+	<name>Phidgets Binding</name>
+	<description>
+	    <![CDATA[
+	    Phidgets are a collection of USB devices and sensors created for hobbyists and engineers to prototype or create their own software controlled systems.
+	    <br/><br/>
+	    Prerequisites:<br/>
+	    <ul>
+	       <li>Phidgets library installed (libphidget22)</li>
+	       <li>Phidgets java binding installed (libphidget22java)</li>
+	       <li>For network discovery, avahi library must be installed (libavahi-client) - optional</li>
+	    </ul>
+	    See: https://www.phidgets.com/docs/Operating_System_Support
+	    <br/><br/>
+	    Website: https://www.phidgets.com/
+	    ]]>
+	</description>
+	<author>Gunnar Skjold</author>
+	
+	<config-description>
+	   <parameter name="logfile" type="text">
+	       <label>Log file</label>
+	       <description>The full path to a file where Phidgets library can log internal messages</description>
+	   </parameter>
+	</config-description>
+
+</binding:binding>
